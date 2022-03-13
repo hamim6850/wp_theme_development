@@ -45,3 +45,11 @@ function your_theme_name_content_width() {
 	$GLOBALS['content_width'] = apply_filters( 'your_theme_name_content_width', 1170 );
 }
 add_action( 'after_setup_theme', 'your_theme_name_content_width', 0 );
+
+
+function your_theme_name_assets(){
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
+}
+add_action('wp_enqueue_scripts','your_theme_name_assets');
